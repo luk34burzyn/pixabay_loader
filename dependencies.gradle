@@ -1,0 +1,158 @@
+ext.deps = [:]
+def deps = [:]
+
+def versions = [:]
+
+versions.android = "7.2"
+versions.kotlin = "1.6.10"
+
+versions.lifecycleVersion = "2.3.1"
+versions.navigation = "2.5.0"
+versions.room = "2.4.2"
+versions.koin = "3.2.0"
+versions.koinExt = "3.0.2"
+versions.coroutine = "1.6.2"
+versions.retrofit = "2.9.0"
+versions.retrocoroutine = "0.9.2"
+versions.preference = "1.2.0"
+versions.gson = "2.9.0"
+versions.androidGradlePlugin = "7.2.1"
+versions.googleServices = "4.3.8"
+versions.kotlin = "1.6.10"
+versions.constraint_layout="2.1.4"
+versions.core="1.8.0"
+versions.appcompat = "1.4.2"
+versions.material = "1.6.1"
+versions.glide = "4.13.0"
+versions.okhttp = "4.10.0"
+versions.firebase = "30.2.0"
+versions.compose = "1.1.1"
+versions.materialCompose = "1.0.0-alpha14"
+
+deps.versions=versions
+
+def compose=[:]
+
+compose.ui="androidx.compose.ui:ui:$versions.compose"
+compose.material="androidx.compose.material:material:$versions.compose"
+compose.preview="androidx.compose.ui:ui-tooling-preview:$versions.compose"
+compose.junit4="androidx.compose.ui:ui-test-junit4:$versions.compose"
+compose.ui_tooling="androidx.compose.ui:ui-tooling:$versions.compose"
+compose.ui_manifest="androidx.compose.ui:ui-test-manifest:$versions.compose"
+
+compose.activity="androidx.activity:activity-compose:1.5.0"
+
+deps.compose=compose
+
+def androidApp=[:]
+androidApp.application = "com.android.application:$versions.android"
+androidApp.library = "com.android.library:$versions.android"
+androidApp.kotlin = "org.jetbrains.kotlin.android:$versions.kotlin"
+
+androidApp.gradle_tools = "com.android.tools.build:gradle:$versions.androidGradlePlugin"
+androidApp.google_service = "com.google.gms:google-services:$versions.googleServices"
+androidApp.kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+
+deps.androidApp = androidApp
+
+versions.lifecycle_extensions = "2.2.0"
+def lifecycle=[:]
+lifecycle.androidX_lifecycle_runtime_ktx = "androidx.lifecycle:lifecycle-runtime-ktx:$versions.lifecycleVersion"
+lifecycle.extensions = "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle_extensions"
+lifecycle.compiler = "androidx.lifecycle:lifecycle-compiler:$versions.lifecycleVersion"
+lifecycle.androidX_lifecycle_viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycleVersion"
+lifecycle.androidX_lifecycle_runtime = "androidx.lifecycle:lifecycle-runtime:$versions.lifecycleVersion"
+lifecycle.androidX_lifecycle_common_java8 = "androidx.lifecycle:lifecycle-common-java8:$versions.lifecycleVersion"
+lifecycle.androidX_lifecycle_livedata = "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycleVersion"
+lifecycle.androidX_annotation = "androidx.annotation:annotation:1.2.0"
+
+deps.lifecycle = lifecycle
+
+def navigation=[:]
+navigation.gradle = "androidx.navigation:navigation-safe-args-gradle-plugin:$versions.navigation"
+navigation.ui = "androidx.navigation:navigation-ui-ktx:$versions.navigation"
+navigation.compose = "androidx.navigation:navigation-compose:$versions.navigation"
+
+deps.navigation = navigation
+
+def tests=[:]
+tests.junit = "junit:junit:4.13.2"
+tests.junitExt = "androidx.test.ext:junit:1.1.3"
+tests.espresso = "androidx.test.espresso:espresso-core:3.4.0"
+
+deps.tests = tests
+
+def support=[:]
+support.constraint_layout = "androidx.constraintlayout:constraintlayout:$versions.constraint_layout"
+support.core = "androidx.core:core-ktx:$versions.core"
+support.appcompat = "androidx.appcompat:appcompat:$versions.appcompat"
+support.material = "com.google.android.material:material:$versions.material"
+
+deps.support = support
+
+def materialCompose=[:]
+
+materialCompose.material3compose="androidx.compose.material3:material3:$versions.materialCompose"
+materialCompose.material3composeWindow="androidx.compose.material3:material3-window-size-class:$versions.materialCompose"
+
+deps.materialCompose=materialCompose
+
+def room=[:]
+room.runtime = "androidx.room:room-runtime:$versions.room"
+room.compiler = "androidx.room:room-compiler:$versions.room"
+
+deps.room = room
+
+def glide=[:]
+glide.lib = "com.github.bumptech.glide:glide:$versions.glide"
+glide.compiler = "com.github.bumptech.glide:compiler:$versions.glide"
+
+deps.glide = glide
+
+def koin=[:]
+koin.android="io.insert-koin:koin-core:$versions.koin"
+koin.compat="io.insert-koin:koin-android-compat:$versions.koin"
+koin.ext="io.insert-koin:koin-android-ext:$versions.koinExt"
+
+deps.koin = koin
+
+def location=[:]
+location.lib = "com.google.android.gms:play-services-location:20.0.0"
+
+deps.location = location
+
+def coroutines=[:]
+coroutines.core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutine"
+coroutines.android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutine"
+
+deps.coroutines = coroutines
+
+def retrofit=[:]
+retrofit.retrofit="com.squareup.retrofit2:retrofit:$versions.retrofit"
+retrofit.gson="com.squareup.retrofit2:converter-gson:$versions.retrofit"
+retrofit.okhttp="com.squareup.okhttp3:okhttp:$versions.okhttp"
+retrofit.okhttp="com.squareup.okhttp3:logging-interceptor:$versions.okhttp"
+retrofit.coroutines="com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$versions.retrocoroutine"
+
+deps.retrofit = retrofit
+
+def gson=[:]
+gson.lib = "com.google.code.gson:gson:$versions.gson"
+
+deps.gson = gson
+
+def preference=[:]
+preference.lib = "androidx.preference:preference:$versions.preference"
+
+deps.preference = preference
+
+def firebase=[:]
+
+firebase.bom="com.google.firebase:firebase-bom:$versions.firebase"
+firebase.crashlytics="com.google.firebase:firebase-crashlytics-ktx"
+firebase.analytics="com.google.firebase:firebase-analytics-ktx"
+firebase.fcm="com.google.firebase:firebase-messaging-ktx"
+
+deps.firebase = firebase
+
+ext.deps = deps
