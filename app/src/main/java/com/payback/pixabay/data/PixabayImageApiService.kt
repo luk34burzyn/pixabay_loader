@@ -15,7 +15,7 @@ interface PixabayImageApiService {
 
 
     /**
-     * Get current weather of city
+     * Searching photos by q, pages and items per page
      *
      * @param CLIENT_ID String api key
      * @param q The String naming query

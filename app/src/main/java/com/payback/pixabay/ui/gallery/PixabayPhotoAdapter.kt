@@ -19,7 +19,7 @@ private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Hit>() {
         oldItem == newItem
 }
 
-class PixabayPhotoAdapter :
+class PixabayPhotoAdapter (private val listener: OnItemClickListener) :
     PagingDataAdapter<Hit, PixabayPhotoAdapter.PhotoViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoViewHolder {
@@ -35,8 +35,21 @@ class PixabayPhotoAdapter :
         }
     }
 
-    class PhotoViewHolder(private val binding: ItemPhotoBinding) :
+    inner class PhotoViewHolder(private val binding: ItemPhotoBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.root.setOnClickListener {
+                val position = bindingAdapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val item = getItem(position)
+                    item?.let {
+                        listener.onItemClick(it)
+                    }
+                }
+            }
+        }
+
         fun bind(photo: Hit) {
             binding.apply {
                 Glide.with(itemView)
@@ -49,5 +62,9 @@ class PixabayPhotoAdapter :
                 textViewTags.text = photo.tags
             }
         }
+    }
+
+    interface OnItemClickListener{
+        fun onItemClick(photo: Hit)
     }
 }
