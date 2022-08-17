@@ -7,6 +7,7 @@ versions.android = "7.2"
 versions.kotlin = "1.6.10"
 
 versions.lifecycleVersion = "2.3.1"
+versions.lifecycle_extensions = "2.2.0"
 versions.navigation = "2.5.0"
 versions.room = "2.4.2"
 versions.hilt = "2.42"
@@ -55,16 +56,9 @@ androidApp.kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
 
 deps.androidApp = androidApp
 
-versions.lifecycle_extensions = "2.2.0"
 def lifecycle=[:]
 lifecycle.androidX_lifecycle_runtime_ktx = "androidx.lifecycle:lifecycle-runtime-ktx:$versions.lifecycleVersion"
 lifecycle.extensions = "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle_extensions"
-lifecycle.compiler = "androidx.lifecycle:lifecycle-compiler:$versions.lifecycleVersion"
-lifecycle.androidX_lifecycle_viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycleVersion"
-lifecycle.androidX_lifecycle_runtime = "androidx.lifecycle:lifecycle-runtime:$versions.lifecycleVersion"
-lifecycle.androidX_lifecycle_common_java8 = "androidx.lifecycle:lifecycle-common-java8:$versions.lifecycleVersion"
-lifecycle.androidX_lifecycle_livedata = "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycleVersion"
-lifecycle.androidX_annotation = "androidx.annotation:annotation:1.2.0"
 
 deps.lifecycle = lifecycle
 
@@ -72,7 +66,6 @@ def navigation=[:]
 navigation.gradle = "androidx.navigation:navigation-safe-args-gradle-plugin:$versions.navigation"
 navigation.ui = "androidx.navigation:navigation-ui-ktx:$versions.navigation"
 navigation.fragment = "androidx.navigation:navigation-fragment-ktx:$versions.navigation"
-navigation.compose = "androidx.navigation:navigation-compose:$versions.navigation"
 
 deps.navigation = navigation
 
@@ -96,19 +89,6 @@ support.material = "com.google.android.material:material:$versions.material"
 
 deps.support = support
 
-def materialCompose=[:]
-
-materialCompose.material3compose="androidx.compose.material3:material3:$versions.materialCompose"
-materialCompose.material3composeWindow="androidx.compose.material3:material3-window-size-class:$versions.materialCompose"
-
-deps.materialCompose=materialCompose
-
-def room=[:]
-room.runtime = "androidx.room:room-runtime:$versions.room"
-room.compiler = "androidx.room:room-compiler:$versions.room"
-
-deps.room = room
-
 def glide=[:]
 glide.lib = "com.github.bumptech.glide:glide:$versions.glide"
 glide.compiler = "com.github.bumptech.glide:compiler:$versions.glide"
@@ -121,11 +101,6 @@ hilt.android="com.google.dagger:hilt-android:$versions.hilt"
 hilt.compiler="com.google.dagger:hilt-android-compiler:$versions.hilt"
 
 deps.hilt = hilt
-
-def location=[:]
-location.lib = "com.google.android.gms:play-services-location:20.0.0"
-
-deps.location = location
 
 def coroutines=[:]
 coroutines.core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutine"
@@ -151,14 +126,5 @@ def preference=[:]
 preference.lib = "androidx.preference:preference:$versions.preference"
 
 deps.preference = preference
-
-def firebase=[:]
-
-firebase.bom="com.google.firebase:firebase-bom:$versions.firebase"
-firebase.crashlytics="com.google.firebase:firebase-crashlytics-ktx"
-firebase.analytics="com.google.firebase:firebase-analytics-ktx"
-firebase.fcm="com.google.firebase:firebase-messaging-ktx"
-
-deps.firebase = firebase
 
 ext.deps = deps

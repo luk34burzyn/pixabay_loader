@@ -3,10 +3,10 @@ package com.payback.pixabay.data
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.payback.pixabay.response.Hit
-import com.payback.pixabay.utils.PIXABAY_STARTING_PAGE_INDEX
 import okio.IOException
 import retrofit2.HttpException
 
+const val PIXABAY_STARTING_PAGE_INDEX = 1
 
 class PixabayPagingSource(
     private val pixabayApi: PixabayImageApiService,

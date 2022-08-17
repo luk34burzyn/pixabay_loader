@@ -13,14 +13,13 @@ import retrofit2.http.Query
 
 interface PixabayImageApiService {
 
-
     /**
-     * Searching photos by q, pages and items per page
+     * Searching photos by query, pages and items per page
      *
-     * @param CLIENT_ID String api key
-     * @param q The String naming query
+     * CLIENT_ID String api key (read README.MD)
+     * @param query The String naming query
      * @param page The Int defining the number of page
-     * @param per_page The Int defining the amount items per page (pagination purposes)
+     * @param perPage The Int defining the amount items per page (pagination purposes)
      */
     @GET("?key=$CLIENT_ID")
     suspend fun searchPhotos(

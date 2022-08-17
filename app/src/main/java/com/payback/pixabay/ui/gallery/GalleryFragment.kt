@@ -12,11 +12,13 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import com.payback.pixabay.R
 import com.payback.pixabay.databinding.FragmentGalleryBinding
 import com.payback.pixabay.response.Hit
+import com.payback.pixabay.utils.debounce
 import com.payback.pixabay.utils.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -86,19 +88,20 @@ class GalleryFragment : Fragment(R.layout.fragment_gallery), PixabayPhotoAdapter
                 menuInflater.inflate(R.menu.menu_gallery, menu)
                 val searcher = menu.findItem(R.id.action_search)
                 val searchView = searcher.actionView as SearchView
+                val writeAndSearch = debounce(DELAY_FOR_SEARCH_IN_MILLIS, lifecycleScope, viewModel::searchPhotos)
 
                 searchView.setOnQueryTextListener(
                     object : SearchView.OnQueryTextListener {
                         override fun onQueryTextSubmit(query: String?): Boolean {
                             if (query != null) {
-                                viewModel.searchPhotos(query)
+                                writeAndSearch(query)
                             }
                             return true
                         }
 
                         override fun onQueryTextChange(query: String?): Boolean  {
                             if (query != null) {
-                                viewModel.searchPhotos(query)
+                                writeAndSearch(query)
                             }
                             return true
                         }
@@ -112,4 +115,7 @@ class GalleryFragment : Fragment(R.layout.fragment_gallery), PixabayPhotoAdapter
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 
+    companion object {
+        const val DELAY_FOR_SEARCH_IN_MILLIS = 500L
+    }
 }
