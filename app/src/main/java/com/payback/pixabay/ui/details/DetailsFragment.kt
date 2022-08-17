@@ -50,9 +50,13 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                     dataSource: DataSource?,
                     isFirstResource: Boolean
                 ): Boolean {
+                    Glide.with(this@DetailsFragment)
+                        .load(photo.userImageURL)
+                        .error(R.drawable.ic_user)
+                        .into(binding.imageUser)
                     binding.progressBar.isVisible = false
-                    binding.textTags.isVisible = true
                     binding.textTags.text = photo.tags
+                    binding.textNameUser.text = photo.user
                     binding.numberOfLikes.text = photo.likes.toString()
                     binding.numberOfDownloads.text = photo.downloads.toString()
                     binding.numberOfComments.text = photo.comments.toString()
