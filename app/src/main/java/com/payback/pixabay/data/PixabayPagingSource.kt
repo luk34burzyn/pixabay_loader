@@ -32,7 +32,10 @@ class PixabayPagingSource(
     }
 
     override fun getRefreshKey(state: PagingState<Int, Hit>): Int? {
-        TODO("Not yet implemented")
+        return state.anchorPosition?.let { anchorPosition ->
+            state.closestPageToPosition(anchorPosition)?.prevKey?.plus(1)
+                ?: state.closestPageToPosition(anchorPosition)?.nextKey?.minus(1)
+        }
     }
 
 }
